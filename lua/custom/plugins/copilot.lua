@@ -1,0 +1,4 @@
+vim.notify 'Copilot enabled'
+return {
+  'github/copilot.vim',
+}
