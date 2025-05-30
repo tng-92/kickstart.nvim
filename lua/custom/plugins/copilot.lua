@@ -1,4 +1,4 @@
 vim.notify 'Copilot enabled'
-return {
-  'github/copilot.vim',
-}
+-- return {
+--   'github/copilot.vim',
+-- }
