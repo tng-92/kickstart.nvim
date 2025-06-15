@@ -157,6 +157,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+vim.opt.spelllang = 'en'
+vim.opt.spell = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -201,21 +204,22 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set('n', '<C-w>l', '<C-W>v<C-W>l<C-W>L')
-vim.keymap.set('n', '<C-w>h', '<C-W>v<C-W>h<C-W>H')
-vim.keymap.set('n', '<C-w>j', '<C-W>s<C-W>j<C-W>J')
-vim.keymap.set('n', '<C-w>k', '<C-W>s<C-W>k<C-W>K')
+vim.keymap.set('n', '<C-w>l', '<C-W>v<C-W>l<C-W>L', { desc = 'Create a window to the right' })
+vim.keymap.set('n', '<C-w>h', '<C-W>v<C-W>h<C-W>H', { desc = 'Create a window to the left' })
+vim.keymap.set('n', '<C-w>j', '<C-W>s<C-W>j<C-W>J', { desc = 'Create a window to the Bottom' })
+vim.keymap.set('n', '<C-w>k', '<C-W>s<C-W>k<C-W>K', { desc = 'Create a window to the Top' })
 
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
-vim.keymap.set('n', '<leader>Y', [["+Y]])
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank selected to the system clipboard' })
+vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = 'Yank current line to the system clipboard' })
 
--- SPLITS
+-- BUFFERS
+vim.keymap.set('n', '<leader>bd', '<cmd>bd<CR>', { desc = 'Delete current buffer' })
 
 -- Arrow keys for resizing windows
-vim.keymap.set('n', '<Left>', '<cmd>vertical resize -2<CR>')
-vim.keymap.set('n', '<Right>', '<cmd>vertical resize +2<CR>')
-vim.keymap.set('n', '<Up>', '<cmd>resize -2<CR>')
-vim.keymap.set('n', '<Down>', '<cmd>resize +2<CR>')
+vim.keymap.set('n', '<Left>', '<cmd>vertical resize -2<CR>', { desc = 'Resize window Left' })
+vim.keymap.set('n', '<Right>', '<cmd>vertical resize +2<CR>', { desc = 'Resize window Right' })
+vim.keymap.set('n', '<Up>', '<cmd>resize -2<CR>', { desc = 'Resize window Up' })
+vim.keymap.set('n', '<Down>', '<cmd>resize +2<CR>', { desc = 'Resize window Down' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -955,7 +959,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      -- vim.cmd.colorscheme 'tokyonight-night'
     end,
   },
 
